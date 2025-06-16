@@ -106,7 +106,84 @@
     </div>
   </nav>
 
-  <!-- ... (existing sections stay the same) ... -->
+  <section id="about" class="section container">
+    <h2>About Me</h2>
+    <div class="row align-items-center">
+      <div class="col-md-4 text-center">
+        <img src="Images/profile.jpg" alt="Charles Ekanem" class="profile-img" />
+      </div>
+      <div class="col-md-8">
+        <p>Hi, I'm Charles Ekanem — a final-year Computer Engineering student at Nile University of Nigeria. I specialize in embedded systems, smart devices, machine learning, and AI solutions tailored to African contexts. I also founded <strong>ANT R&D Lab</strong> to promote innovative tech development and research tools. I enjoy solving real-world problems and developing systems that matter.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" class="section container">
+    <h2>Projects</h2>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="project-card">
+          <h4>TicTacToe Game (Python)</h4>
+          <p>A classic 2-player game developed with the Waterfall model.</p>
+          <img src="Images/tictactoe.png" class="img-fluid mb-2" alt="TicTacToe" />
+          <a href="https://github.com/Charles04Ekanem/SoftwareDevTechniques-Project" class="btn btn-outline-primary btn-sm">GitHub</a>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="project-card">
+          <h4>4WD Arduino Car</h4>
+          <p>Designed and programmed a 4WD Arduino-based robotic vehicle.</p>
+          <img src="Images/4wd.jpg" class="img-fluid mb-2" alt="4WD Car" />
+          <a href="https://github.com/Charles04Ekanem/EmbeddedSystems" class="btn btn-outline-primary btn-sm">GitHub</a>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="project-card">
+          <h4>Smart Dustbin</h4>
+          <p>An ultrasonic sensor-based contactless smart waste bin using Arduino.</p>
+          <img src="Images/smart-dustbin.jpg" class="img-fluid mb-2" alt="Smart Bin" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills" class="section container">
+    <h2>Skills</h2>
+    <div class="row g-4">
+      <div class="col-md-4 skill-card">
+        <h5>Python, C++</h5>
+        <div class="progress"><div class="progress-bar bg-success" style="width: 90%"></div></div>
+      </div>
+      <div class="col-md-4 skill-card">
+        <h5>MATLAB, AutoCAD</h5>
+        <div class="progress"><div class="progress-bar bg-info" style="width: 80%"></div></div>
+      </div>
+      <div class="col-md-4 skill-card">
+        <h5>Web Dev (HTML, CSS, JS)</h5>
+        <div class="progress"><div class="progress-bar bg-warning" style="width: 85%"></div></div>
+      </div>
+      <div class="col-md-4 skill-card">
+        <h5>Machine Learning (PyTorch, NumPy)</h5>
+        <div class="progress"><div class="progress-bar bg-danger" style="width: 75%"></div></div>
+      </div>
+      <div class="col-md-4 skill-card">
+        <h5>Embedded Systems (Arduino)</h5>
+        <div class="progress"><div class="progress-bar bg-primary" style="width: 80%"></div></div>
+      </div>
+      <div class="col-md-4 skill-card">
+        <h5>Networking</h5>
+        <div class="progress"><div class="progress-bar bg-secondary" style="width: 70%"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="section container">
+    <h2>Contact</h2>
+    <p><strong>Email:</strong> <a href="mailto:charlesitaekanem@gmail.com">charlesitaekanem@gmail.com</a></p>
+    <p><strong>Phone:</strong> +234 707 213 6684</p>
+    <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/charles-ekanem-34b6402a6" target="_blank">Charles Ekanem</a></p>
+    <p><strong>GitHub:</strong> <a href="https://github.com/Charles04Ekanem" target="_blank">Charles04Ekanem</a></p>
+  </section>
 
   <footer class="text-center">
     <div class="container">
@@ -120,13 +197,11 @@
   <script>
     AOS.init();
 
-    // Dark mode toggle
     const toggle = document.getElementById('darkToggle');
     toggle.addEventListener('click', () => {
       document.body.classList.toggle('dark-mode');
     });
 
-    // Particle.js config
     particlesJS('particles-js', {
       particles: {
         number: { value: 40 },
