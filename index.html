@@ -119,34 +119,93 @@
     </div>
   </section>
 
-  <section id="projects" class="section container">
-    <h2>Projects</h2>
-    <div class="row g-4">
-      <div class="col-md-4">
-        <div class="project-card">
-          <h4>TicTacToe Game (Python)</h4>
-          <p>A classic 2-player game developed with the Waterfall model.</p>
-          <img src="images/tictactoe.png" class="img-fluid mb-2" alt="TicTacToe" />
-          <a href="https://github.com/Charles04Ekanem/SoftwareDevTechniques-Project" class="btn btn-outline-primary btn-sm">GitHub</a>
+<section id="projects" class="section container">
+  <h2>Projects</h2>
+  <div class="row g-4">
+    <div class="col-md-4">
+      <div class="project-card" data-bs-toggle="modal" data-bs-target="#projectModal1">
+        <div class="project-tags">
+          <span>Python</span>
+          <span>Game</span>
         </div>
+        <h4>TicTacToe Game (Python)</h4>
+        <p>A classic 2-player game developed with the Waterfall model.</p>
+        <img src="images/tictactoe.png" class="img-fluid mb-2" alt="TicTacToe" />
+        <a href="https://github.com/Charles04Ekanem/SoftwareDevTechniques-Project" class="btn btn-outline-primary btn-sm">GitHub</a>
       </div>
-      <div class="col-md-4">
-        <div class="project-card">
-          <h4>4WD Arduino Car</h4>
-          <p>Designed and programmed a 4WD Arduino-based robotic vehicle.</p>
-          <img src="images/4wd.jpg" class="img-fluid mb-2" alt="4WD Car" />
-          <a href="https://github.com/Charles04Ekanem/EmbeddedSystems" class="btn btn-outline-primary btn-sm">GitHub</a>
+    </div>
+    <div class="col-md-4">
+      <div class="project-card" data-bs-toggle="modal" data-bs-target="#projectModal2">
+        <div class="project-tags">
+          <span>Arduino</span>
+          <span>Embedded</span>
         </div>
+        <h4>4WD Arduino Car</h4>
+        <p>Designed and programmed a 4WD Arduino-based robotic vehicle.</p>
+        <img src="images/4wd.jpg" class="img-fluid mb-2" alt="4WD Car" />
+        <a href="https://github.com/Charles04Ekanem/EmbeddedSystems" class="btn btn-outline-primary btn-sm">GitHub</a>
       </div>
-      <div class="col-md-4">
-        <div class="project-card">
-          <h4>Smart Dustbin</h4>
-          <p>An ultrasonic sensor-based contactless smart waste bin using Arduino.</p>
-          <img src="images/smart-dustbin.jpg" class="img-fluid mb-2" alt="Smart Bin" />
+    </div>
+    <div class="col-md-4">
+      <div class="project-card" data-bs-toggle="modal" data-bs-target="#projectModal3">
+        <div class="project-tags">
+          <span>IoT</span>
+          <span>Arduino</span>
+        </div>
+        <h4>Smart Dustbin</h4>
+        <p>An ultrasonic sensor-based contactless smart waste bin using Arduino.</p>
+        <img src="images/smart-dustbin.jpg" class="img-fluid mb-2" alt="Smart Bin" />
+      </div>
+    </div>
+  </div>
+
+  <!-- Modals -->
+  <div class="modal fade" id="projectModal1" tabindex="-1" aria-labelledby="projectModal1Label" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="projectModal1Label">TicTacToe Game (Python)</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <img src="images/tictactoe.png" alt="TicTacToe" />
+          <p>A classic 2-player terminal-based game built in Python using the Waterfall development model for a software engineering course.</p>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+
+  <div class="modal fade" id="projectModal2" tabindex="-1" aria-labelledby="projectModal2Label" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="projectModal2Label">4WD Arduino Car</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <img src="images/4wd.jpg" alt="4WD Arduino Car" />
+          <p>Arduino-based 4WD robotic vehicle designed for embedded systems coursework. Demonstrates motor control, sensors, and system integration.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="projectModal3" tabindex="-1" aria-labelledby="projectModal3Label" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="projectModal3Label">Smart Dustbin</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <img src="images/smart-dustbin.jpg" alt="Smart Dustbin" />
+          <p>Contactless smart bin using an ultrasonic sensor and Arduino. Lid opens automatically on detecting hand proximity for hygiene and accessibility.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 
   <section id="skills" class="section container">
     <h2>Skills</h2>
