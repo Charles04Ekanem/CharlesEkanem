@@ -117,7 +117,7 @@
         <img src="images/profile.jpg" alt="Charles Ekanem" class="profile-img" />
       </div>
       <div class="col-md-8">
-        <p>Hello there! I'm Charles Ekanem, a final-year Computer Engineering student at Nile University of Nigeria. I have interests in embedded systems, smart devices, machine learning and AI solutions tailored to Nigerian contexts. I also founded <strong>ANT Research and Development Lab</strong> to promote innovative tech research and development tools. I enjoy solving real-world problems and developing systems that matter.</p>
+        <p>Hello there! I'm Charles Ekanem, a final-year Computer Engineering student at Nile University of Nigeria. I have interests in embedded systems, smart devices, machine learning and AI solutions tailored to Nigerian contexts. I also founded <strong>ANT Research and Development Lab</strong> to promote innovative tech research and development tools. I'm passionate about building smart systems that blend machine learning and electronics into real-world solutions.</p>
       </div>
     </div>
   
@@ -163,8 +163,6 @@
       </div>
     </div>
   </section>
-
-
 
   <section id="projects" class="section container">
     <h2>Projects</h2>
@@ -256,32 +254,31 @@
 
   <section id="skills" class="section container">
     <h2>Skills</h2>
-    <div class="row g-4">
-      <div class="col-md-4 skill-card">
-        <h5>Python, C++</h5>
-        <div class="progress"><div class="progress-bar bg-success" style="width: 90%"></div></div>
-      </div>
-      <div class="col-md-4 skill-card">
-        <h5>MATLAB, AutoCAD</h5>
-        <div class="progress"><div class="progress-bar bg-info" style="width: 80%"></div></div>
-      </div>
-      <div class="col-md-4 skill-card">
-        <h5>Web Dev (HTML, CSS, JS)</h5>
-        <div class="progress"><div class="progress-bar bg-warning" style="width: 85%"></div></div>
-      </div>
-      <div class="col-md-4 skill-card">
-        <h5>Machine Learning (PyTorch, NumPy)</h5>
-        <div class="progress"><div class="progress-bar bg-danger" style="width: 75%"></div></div>
-      </div>
-      <div class="col-md-4 skill-card">
-        <h5>Embedded Systems (Arduino)</h5>
-        <div class="progress"><div class="progress-bar bg-primary" style="width: 80%"></div></div>
-      </div>
-      <div class="col-md-4 skill-card">
-        <h5>Networking</h5>
-        <div class="progress"><div class="progress-bar bg-secondary" style="width: 70%"></div></div>
-      </div>
-    </div>
+    <div class="about__content-skills">
+            <h3 class="about__content-title">Skills</h3>
+            <div class="skills">
+              <div class="skills__skill" data-skill="ML">Machine Learning (Neural Networks)</div>
+              <div class="skills__skill" data-skill="MCU">Microcontroller and Electronics (Arduino)</div>
+              <div class="skills__skill" data-skill="CAD">Computer-Aided Design and Engineering (Proteus, AutoCAD)</div>
+              <div class="skills__skill" data-skill="SE">Software Engineering and Development (GitHub, SDLC)</div>
+              <div class="skills__skill" data-skill="NET">Computer Networks (Network Security, Setup and Monitoring)</div>
+              <div class="skills__skill" data-skill="DSA">Digital Systems and Architecture (VHDL, Assembly Language)</div>
+              <div class="skills__skill" data-skill="CG">Computer Graphics and Animation</div>
+              <div class="skills__skill" data-skill="DOC">Technical Documentation and Communication (Reports and Research)</div>
+            </div>
+          </div>
+
+          <!-- Modal with icon -->
+          <div id="skillModal" class="modal">
+            <div class="modal-content">
+              <span class="close-btn">&times;</span>
+              <div class="modal-header">
+                <div class="modal-icon" id="modalIcon">💡</div>
+                <h4 id="modalTitle">Skill Title</h4>
+              </div>
+              <p id="modalText">Detailed description about the skill...</p>
+            </div>
+          </div>
   </section>
 
   <section id="contact" class="section container">
