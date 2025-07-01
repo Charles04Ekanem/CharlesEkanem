@@ -296,26 +296,52 @@
     </div>
   </section>
 
-   <section id="contact" class="container mx-auto py-8">
-    <h2>Contact</h2>
-      <div class="flex justify-center flex-wrap">     
-        <!-- Email -->
-        <a href="mailto:charlesitaekanem@gmail.com" title="Email"
-           class="mx-6 my-2 transition-transform hover:scale-110">
-          <img src="https://img.icons8.com/color/48/gmail-new.png" alt="Email" class="w-12 h-12" />
-        </a>
-        <!-- LinkedIn -->
-        <a href="https://www.linkedin.com/in/charles-ekanem-34b6402a6" target="_blank" title="LinkedIn"
-           class="mx-6 my-2 transition-transform hover:scale-110">
-          <img src="https://img.icons8.com/color/48/linkedin.png" alt="LinkedIn" class="w-12 h-12" />
-        </a>
-        <!-- GitHub -->
-        <a href="https://github.com/Charles04Ekanem" target="_blank" title="GitHub"
-           class="mx-6 my-2 transition-transform hover:scale-110">
-          <img src="https://img.icons8.com/material-outlined/48/github.png" alt="GitHub" class="w-12 h-12" />
-        </a>    
-      </div>
-    </section>
+  <section id="contact" class="container py-5 text-center">
+    <h2 class="mb-4">Contact</h2>
+  
+    <div id="tailwind-contact-root"></div>
+  
+    <script>
+      const root = document.getElementById('tailwind-contact-root');
+      const shadow = root.attachShadow({ mode: 'open' });
+  
+      shadow.innerHTML = `
+        <link href="https://cdn.tailwindcss.com" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+        <style>
+          body { margin: 0; background: transparent; }
+        </style>
+        <div class="flex justify-center gap-8 flex-wrap py-2">
+          <a href="mailto:charlesitaekanem@gmail.com" title="Email"
+             class="transition-transform hover:scale-110"
+             data-aos="zoom-in" data-aos-delay="100">
+            <img src="https://img.icons8.com/color/48/gmail-new.png" alt="Email" class="w-12 h-12" />
+          </a>
+  
+          <a href="https://www.linkedin.com/in/charles-ekanem-34b6402a6" target="_blank" title="LinkedIn"
+             class="transition-transform hover:scale-110"
+             data-aos="zoom-in" data-aos-delay="200">
+            <img src="https://img.icons8.com/color/48/linkedin.png" alt="LinkedIn" class="w-12 h-12" />
+          </a>
+  
+          <a href="https://github.com/Charles04Ekanem" target="_blank" title="GitHub"
+             class="transition-transform hover:scale-110"
+             data-aos="zoom-in" data-aos-delay="300">
+            <img src="https://img.icons8.com/material-outlined/48/github.png" alt="GitHub" class="w-12 h-12" />
+          </a>
+        </div>
+  
+        <script>
+          // AOS in shadow root
+          const script = document.createElement('script');
+          script.src = 'https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js';
+          script.onload = () => AOS.init({ once: true });
+          document.currentScript.parentNode.appendChild(script);
+        </script>
+      `;
+    </script>
+  </section>
+
 
   <footer class="text-center">
     <div class="container">
