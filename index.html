@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Charles Ekanem | Computer Engineer & R&D</title>
+  <title>Charles Ekanem | Computer and Research Engineer</title>
   <link rel="icon" href="images/Logo.png" type="image/jpg" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
@@ -52,34 +52,26 @@
       padding: 1.5rem;
       box-shadow: 0 2px 12px rgba(0,0,0,0.05);
       transition: transform 0.3s, background 0.3s;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
     }
+    
     .dark-mode .project-card, .dark-mode .skill-card {
       background: #1f1f1f;
     }
+    
     .project-card:hover, .skill-card:hover {
       transform: translateY(-5px);
     }
-    .skills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem; /* space between cards */
-    }
     
-    .skills__skill {
-      padding: 0.75rem 1.25rem;
-      background-color: #222;
-      color: white;
-      border-radius: 8px;
-      font-size: 0.95rem;
-      flex: 1 1 calc(33.33% - 2rem); /* 3 cards per row, adjust as needed */
-      min-width: 200px; /* prevents too small on narrow screens */
-      box-sizing: border-box;
-      text-align: center;
+    /* Force equal height in grid layout */
+    .row.g-4 > .col-md-4 {
+      display: flex;
     }
-
-    .skills__skill:hover {
-      background-color: #6200ea;
-      transform: scale(1.05);
+    .row.skills-row > .col-md-4 {
+      display: flex;
     }
 
     @keyframes fadeIn {
@@ -255,33 +247,43 @@
     </div>
   </section>
 
-  <section id="skills" class="section container">
-    <div class="row mt-5">
-      <h2>Skills</h2>
-      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-        <div class="bg-gray-900 hover:bg-purple-800 transition-colors duration-300 p-6 rounded-xl shadow-md text-center cursor-pointer">
-          <p class="text-white font-medium text-lg">Machine Learning</p>
+   <section id="skills" class="section container">
+    <h2>Skills</h2>
+    <div class="row skills-row g-4">
+      <div class="col-md-4">
+        <div class="skill-card">
+          <h4>Embedded Systems</h4>
+          <p>Experience with Arduino, Raspberry Pi, and interfacing with sensors and actuators.</p>
         </div>
-        <div class="bg-gray-900 hover:bg-purple-800 transition-colors duration-300 p-6 rounded-xl shadow-md text-center cursor-pointer">
-          <p class="text-white font-medium text-lg">Microcontrollers</p>
+      </div>
+      <div class="col-md-4">
+        <div class="skill-card">
+          <h4>Machine Learning</h4>
+          <p>Skilled in PyTorch, CNNs, LSTMs, and custom models for audio, vision, and embedded AI.</p>
         </div>
-        <div class="bg-gray-900 hover:bg-purple-800 transition-colors duration-300 p-6 rounded-xl shadow-md text-center cursor-pointer">
-          <p class="text-white font-medium text-lg">CAD & Simulation</p>
+      </div>
+      <div class="col-md-4">
+        <div class="skill-card">
+          <h4>Web Development</h4>
+          <p>Frontend skills in HTML, CSS, JavaScript; experience with Streamlit and deployment.</p>
         </div>
-        <div class="bg-gray-900 hover:bg-purple-800 transition-colors duration-300 p-6 rounded-xl shadow-md text-center cursor-pointer">
-          <p class="text-white font-medium text-lg">Software Dev & Git</p>
+      </div>
+      <div class="col-md-4">
+        <div class="skill-card">
+          <h4>Signal Processing</h4>
+          <p>Digital filtering, audio noise reduction, and real-time data processing with AI.</p>
         </div>
-        <div class="bg-gray-900 hover:bg-purple-800 transition-colors duration-300 p-6 rounded-xl shadow-md text-center cursor-pointer">
-          <p class="text-white font-medium text-lg">Networking</p>
+      </div>
+      <div class="col-md-4">
+        <div class="skill-card">
+          <h4>Computer Vision</h4>
+          <p>Image classification, facial recognition, and detection models for real-world environments.</p>
         </div>
-        <div class="bg-gray-900 hover:bg-purple-800 transition-colors duration-300 p-6 rounded-xl shadow-md text-center cursor-pointer">
-          <p class="text-white font-medium text-lg">Digital Systems</p>
-        </div>
-        <div class="bg-gray-900 hover:bg-purple-800 transition-colors duration-300 p-6 rounded-xl shadow-md text-center cursor-pointer">
-          <p class="text-white font-medium text-lg">Graphics & Animation</p>
-        </div>
-        <div class="bg-gray-900 hover:bg-purple-800 transition-colors duration-300 p-6 rounded-xl shadow-md text-center cursor-pointer">
-          <p class="text-white font-medium text-lg">Tech Writing</p>
+      </div>
+      <div class="col-md-4">
+        <div class="skill-card">
+          <h4>Control Systems</h4>
+          <p>Modeling and implementation of basic control algorithms for robotics and automation.</p>
         </div>
       </div>
     </div>
