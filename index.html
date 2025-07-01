@@ -476,36 +476,42 @@
   });
 </script>
 
- <!-- Place script before </body> -->
-  <script>
-    const canvas = document.getElementById('starfield');
-    const ctx = canvas.getContext('2d');
+<script>
+  const canvas = document.getElementById('starfield');
+  const ctx = canvas.getContext('2d');
+
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  const stars = Array(200).fill().map(() => ({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    r: Math.random() * 1.5
+  }));
+
+  function animateStars() {
+    // Make the canvas transparent — no background fill
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // Draw stars only
+    ctx.fillStyle = '#fff'; // star color (adjust for style)
+    stars.forEach(s => {
+      s.y += 0.5;
+      if (s.y > canvas.height) s.y = 0;
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+      ctx.fill();
+    });
+
+    requestAnimationFrame(animateStars);
+  }
+
+  animateStars();
+
+  window.addEventListener('resize', () => {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
-    const stars = Array(200).fill().map(() => ({
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height,
-      r: Math.random() * 1.5
-    }));
-
-    function animateStars() {
-      ctx.fillStyle = '#0f0f0f';
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-      ctx.fillStyle = '#fff';
-      stars.forEach(s => {
-        s.y += 0.5;
-        if (s.y > canvas.height) s.y = 0;
-        ctx.beginPath();
-        ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-        ctx.fill();
-      });
-      requestAnimationFrame(animateStars);
-    }
-    animateStars();
-    window.addEventListener('resize', () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    });
-  </script>
+  });
+</script>
 </body>
 </html>
