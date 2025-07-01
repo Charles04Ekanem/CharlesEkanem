@@ -159,6 +159,7 @@
 </nav>
 
 <section id="home" class="vh-100 d-flex flex-column justify-content-center align-items-center text-center home-bg position-relative">
+  <canvas id="starfield" class="position-absolute top-0 start-0 w-100 h-100" style="z-index: -1;"></canvas>
   <!-- Carousel -->
   <div id="homeCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2000">
     <div class="carousel-inner rounded shadow-lg mx-auto" style="max-width: 360px;">
@@ -506,6 +507,5 @@
       canvas.height = window.innerHeight;
     });
   </script>
-  
 </body>
 </html>
