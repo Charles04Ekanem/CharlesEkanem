@@ -481,10 +481,6 @@
   
   <section id="contact" class="section container">
     <h2>Contact</h2>
-      <div class="mt-6 space-y-2 text-center">
-        <p><a href="mailto:charlesitaekanem@gmail.com" class="text-purple-400">Propose a Project</a></p>
-        <p><a href="careers.html" class="text-purple-400">Collaborate</a></p>
-      </div>
     <div class="d-flex justify-content-center flex-wrap gap-4">
       <!-- Email -->
       <a href="mailto:charlesitaekanem@gmail.com" title="Email"
@@ -510,6 +506,26 @@
       <a href="https://www.researchgate.net/profile/Charles-Ekanem?ev=hdr_xprf" target="_blank" title="ResearchGate" class="mx-6 my-2 contact-icon" data-aos="zoom-in" data-aos-delay="200">
         <img src="images/researchgate.png" alt="ResearchGate" style="width: 48px; height: 48px;" />
       </a>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <form action="https://formspree.io/f/movwbaae" method="POST">
+          <div class="mb-3">
+            <label for="name" class="form-label">Your Name</label>
+            <input type="text" class="form-control" id="name" name="name" required />
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Your Email</label>
+            <input type="email" class="form-control" id="email" name="_replyto" required />
+          </div>
+          <div class="mb-3">
+            <label for="message" class="form-label">Your Message</label>
+            <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Send Message</button>
+        </form>
+      </div>
     </div>
   </section>
 
