@@ -175,7 +175,6 @@
   <div id="lightbox" class="lightbox" role="dialog" aria-hidden="true">
     <button class="close-x" aria-label="Close" onclick="closeLightbox()">&times;</button>
     <img class="modal-img" id="lightboxImg" src="" alt="Expanded image" />
-    <div class="meta" id="lightboxMeta"></div>
   </div>
 
   <footer>
@@ -208,13 +207,17 @@
     });
 
     // Lightbox
-    function openLightbox(src,meta){
-      const lb=document.getElementById('lightbox');
+    function openLightbox(src){
+      const lb = document.getElementById('lightbox');
       document.getElementById('lightboxImg').src = src;
-      document.getElementById('lightboxMeta').innerText = meta;
-      lb.classList.add('show'); lb.setAttribute('aria-hidden','false');
+      lb.classList.add('show');
+      lb.setAttribute('aria-hidden','false');
     }
-    function closeLightbox(){ const lb=document.getElementById('lightbox'); lb.classList.remove('show'); lb.setAttribute('aria-hidden','true'); }
+    function closeLightbox(){
+      const lb = document.getElementById('lightbox');
+      lb.classList.remove('show');
+      lb.setAttribute('aria-hidden','true');
+    }
 
     // Close lightbox on ESC
     document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeLightbox(); });
