@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Publications | Charles Ekanem</title>
+  <link rel="icon" href="images/Logo.png" type="image/png" />
+
+  <!-- Bootstrap & AOS (match main site) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
+
+  <style>
+
+    /* ===============================
+      Publication cards
+    ================================ */
+
+    .pub-card {
+      border-radius: .75rem;
+      overflow: hidden;
+      border: 1px solid rgba(0,0,0,0.08);
+      transition: transform .25s ease, box-shadow .25s ease;
+      background: #ffffff;
+    }
+
+    .pub-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 28px rgba(0,0,0,0.15);
+    }
+
+    .dark-mode .pub-card {
+      background: #1f1f1f;
+      border-color: rgba(255,255,255,0.08);
+    }
+
+    /* Image preview */
+    .pub-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      background: #eaeaea;
+    }
+
+    .dark-mode .pub-card img {
+      background: #2a2a2a;
+    }
+
+    /* Card body text */
+    .pub-card .card-body {
+      padding: 1rem 1.1rem;
+    }
+
+    .pub-title {
+      font-size: .95rem;
+      font-weight: 600;
+      margin-bottom: .35rem;
+      line-height: 1.35;
+    }
+
+    .pub-meta {
+      font-size: .8rem;
+      color: #555;
+      margin-bottom: .4rem;
+    }
+
+    .dark-mode .pub-meta {
+      color: #bdbdbd;
+    }
+
+    .pub-authors {
+      font-size: .8rem;
+      line-height: 1.4;
+      margin-bottom: .6rem;
+    }
+
+    /* Footer link */
+    .pub-link a {
+      font-size: .8rem;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .pub-link a:hover {
+      text-decoration: underline;
+    }
+
+    /* Publication cards base */
+    .pub-card {
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    /* Hover pop animation */
+    .pub-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 28px rgba(0,0,0,0.18);
+    }
+
+    /* Dark mode override */
+    body.dark-mode .pub-card {
+      background-color: #1e1e1e !important;
+      color: #e6e6e6 !important;
+    }
+
+    body.dark-mode .pub-card .pub-title {
+      color: #ffffff !important;
+    }
+
+    body.dark-mode .pub-card .pub-meta,
+    body.dark-mode .pub-card .pub-authors {
+      color: #cfcfcf !important;
+    }
+
+    body.dark-mode .pub-card a {
+      color: #9ecbff !important;
+    }
+
+    /* Fonts & base to match your main site (Monaco for body-like feel, Oswald for headings) */
+    :root{--accent:#007bff}
+    body{font-family: Monaco, Consolas, "Lucida Console", monospace; background:#f7f9fc; color:#2c2c2c; transition:background .35s, color .35s;}
+    body.dark-mode{background:#121212;color:#e0e0e0}
+
+    /* Navbar — match main site style */
+    .navbar {background-color:#ffffff; box-shadow:0 2px 10px rgba(0,0,0,0.05);} 
+    .dark-mode .navbar{background-color:#1e1e1e}
+    .navbar-brand{color:var(--accent); font-weight:600}
+    .nav-link{color:inherit}
+
+    /* Hero / Title */
+    .gallery-hero{padding:2.75rem 1rem; text-align:center; background:transparent}
+    .gallery-hero h2{font-size:2rem; border-bottom:2px solid var(--accent); display:inline-block; padding-bottom:.5rem}
+
+    /* Filter bar */
+    .filter-bar{display:flex;gap:.5rem;justify-content:center;flex-wrap:wrap;padding:1rem}
+    .filter-btn{border-radius:999px;padding:.45rem .9rem;border:1px solid rgba(0,0,0,0.08);background:#fff;cursor:pointer}
+    .filter-btn.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+    .dark-mode .filter-btn{background:#1f1f1f;color:#ddd;border-color:#2a2a2a}
+    .dark-mode .filter-btn.active{background:var(--accent);color:#000}
+
+    /* Gallery grid cards (Bootstrap grid used) */
+    .photo-card{position:relative;border-radius:.75rem;overflow:hidden;cursor:pointer;border:1px solid rgba(2,6,23,0.03);background:#fff}
+    .dark-mode .photo-card{background:#1f1f1f}
+    .photo-card img{width:100%;height:260px;object-fit:cover;display:block;transition:transform .45s ease, filter .35s}
+    .photo-card:hover img{transform:scale(1.04);filter:brightness(.7)}
+
+    /* Overlay on hover */
+    .card-overlay{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;background:linear-gradient(0deg, rgba(0,0,0,0.6), rgba(0,0,0,0.2));opacity:0;transition:opacity .28s}
+    .photo-card:hover .card-overlay{opacity:1}
+    .card-overlay h5{margin:0;font-size:1rem}
+    .card-overlay p{margin:6px 0 0;font-size:.85rem;opacity:.95}
+
+    /* Responsive columns per your spec: large = 4 per row, small = 2 per row */
+    /* We'll use Bootstrap classes: col-lg-3 (4), col-md-4 (3), col-sm-6 (2) */
+
+    /* Lightbox */
+    .lightbox{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.8);z-index:3000;padding:18px;visibility:hidden;opacity:0;transition:opacity .2s,visibility .2s}
+    .lightbox.show{visibility:visible;opacity:1}
+    .lightbox .modal-img{max-width:95%;max-height:85%;border-radius:.5rem;box-shadow:0 12px 40px rgba(0,0,0,0.6)}
+    .lightbox .meta{color:#fff;text-align:center;margin-top:.8rem}
+    .lightbox .close-x{position:absolute;top:18px;right:22px;font-size:2rem;color:#fff;cursor:pointer}
+
+    /* Small UI niceties */
+    footer{padding:1rem 0;background:#f8f9fa;text-align:center}
+    .dark-mode footer{background:#1e1e1e}
+
+     /* Default light mode colors */
+    body { --nav-text: #2c2c2c; }
+    body.dark-mode { --nav-text: #e0e0e0; }
+
+    .hover-color {
+      color: var(--nav-text);
+      transition: color 0.2s;
+    }
+
+    .hover-color[data-color="yellow"]:hover { color: #facc15; }
+    .hover-color[data-color="green"]:hover { color: #22c55e; }
+    .hover-color[data-color="red"]:hover { color: #ef4444; }
+    .hover-color[data-color="violet"]:hover { color: #8b5cf6; }
+    .hover-color[data-color="pink"]:hover { color: #ec4899; }
+    .hover-color[data-color="indigo"]:hover { color: #6366f1; }
+  </style>
+</head>
+<body>
+
+  <!-- Dark toggle (keep same placement as main) -->
+  <button id="darkToggle" class="btn btn-sm btn-dark" style="position:fixed;bottom:20px;left:20px;z-index:9999;opacity:.9">Toggle Dark Mode</button>
+
+  <!-- navbar -->
+  <nav class="navbar navbar-expand-lg sticky-top">
+    <div class="container d-flex align-items-center">
+      <a class="navbar-brand d-flex align-items-center" href="index.html">
+        <img src="images/Logo.png" alt="ANT R&D Logo" class="rounded-circle me-2" style="height:40px;width:40px">
+        Charles Ekanem
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navLinks"><span class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse" id="navLinks">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link hover-color" data-color="yellow" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link hover-color" data-color="green" href="#projects">Projects</a></li>
+          <li class="nav-item"><a class="nav-link hover-color" data-color="red" href="#skills">Skills</a></li>
+          <li class="nav-item"><a class="nav-link hover-color" data-color="violet" href="#contact">Contact</a></li>
+          <li class="nav-item"><a class="nav-link hover-color" data-color="pink" href="publications.html">Publications</a></li>
+          <li class="nav-item"><a class="nav-link hover-color" data-color="yellow" href="gallery.html">Gallery</a></li>
+          <li class="nav-item"><a class="nav-link hover-color" data-color="indigo" href="CV.pdf" target="_blank">Resume/CV</a></li>
+          <li class="nav-item"><a class="nav-link hover-color" data-color="red" href="datasets.html">Datasets</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="gallery-hero">
+    <h2 data-aos="fade-up">Publications</h2>
+    <p class="mt-3" data-aos="fade-up" data-aos-delay="100">Publications, Preprint, Journals, Technical Reports, Conferences.</p>
+  </header>
+
+  <!-- Filters -->
+  <div class="container mt-4">
+    <div class="filter-bar container">
+      <button class="btn btn-outline-secondary filter-btn active" data-filter="all">All</button>
+      <button class="btn btn-outline-secondary filter-btn" data-filter="conference">Conference</button>
+      <button class="btn btn-outline-secondary filter-btn" data-filter="journal">Journal</button>
+      <button class="btn btn-outline-secondary filter-btn" data-filter="preprint">Preprint</button>
+      <button class="btn btn-outline-secondary filter-btn" data-filter="technical report">Technical Report</button>
+    </div>
+  </div>
+
+
+  <main class="container mt-4 mb-5">
+    <div class="row g-4">
+      <div class="col-lg-4 col-md-6 pub-col" data-category="preprint">
+        <div class="card pub-card h-100">
+          <img src="C:\Users\CHARLES EKANEM\Documents\Portfolio\Images\Screenshot 2025-12-13 191136.png"
+              alt="Paper preview">
+
+          <div class="card-body d-flex flex-column">
+
+            <div class="pub-title">
+              Dataset Localization for African AI Systems
+            </div>
+
+            <div class="pub-meta">
+              Preprint · AI Policy · 2025
+            </div>
+
+            <div class="pub-authors">
+              Charles Ekanem
+            </div>
+
+            <div class="mt-auto pub-link">
+              <a href="https://www.researchgate.net/"
+                target="_blank">
+                View publication
+              </a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6 pub-col" data-category="conference">
+        <div class="card pub-card h-100">
+          <img src="C:\Users\CHARLES EKANEM\Documents\Portfolio\Images\Screenshot 2025-12-13 191049.png"
+              alt="Paper preview">
+
+          <div class="card-body d-flex flex-column">
+
+            <div class="pub-title">
+              CBAR: CNN-BiLSTM-Attention-Residual Architecture for Nigerian Speech Enhancement
+            </div>
+
+            <div class="pub-meta">
+              Conference Submission · Speech Processing · 2025
+            </div>
+
+            <div class="pub-authors">
+              Charles Ita Ekanem, Nyangwarimam Obadiah Ali, Emmanuel Ali
+            </div>
+
+            <div class="mt-auto pub-link">
+              <a href="https://journal-website-placeholder.com"
+                target="_blank">
+                View Publication
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6 pub-col" data-category="journal">
+        <div class="card pub-card h-100">
+          <img src="C:\Users\CHARLES EKANEM\Documents\Portfolio\Images\Screenshot 2025-12-13 191120.png"
+              alt="Paper preview">
+
+          <div class="card-body d-flex flex-column">
+
+            <div class="pub-title">
+              MEDD: A Multi-Engine approach to Deepfake Detection with Hybrid Dataset.
+            </div>
+
+            <div class="pub-meta">
+              Journal Submission · Computer Vision · 2026
+            </div>
+
+            <div class="pub-authors">
+              Charles Ita Ekanem, Emmanuel Ali
+            </div>
+
+            <div class="mt-auto pub-link">
+              <a href="https://journal-website-placeholder.com"
+                target="_blank">
+                View Publication
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+
+  <!-- Lightbox modal (custom, lightweight) -->
+  <div id="lightbox" class="lightbox" role="dialog" aria-hidden="true">
+    <button class="close-x" aria-label="Close" onclick="closeLightbox()">&times;</button>
+    <img class="modal-img" id="lightboxImg" src="" alt="Expanded image" />
+    <div class="meta" id="lightboxMeta"></div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <p class="mb-0">&copy; 2025 Charles Ekanem • ANT R&D</p>
+    </div>
+  </footer>
+
+  <!-- Scripts (Bootstrap, AOS) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({once:true});
+
+    // Dark mode toggle (sync with main site's behavior)
+    const darkToggle = document.getElementById('darkToggle');
+    darkToggle.addEventListener('click', ()=> document.body.classList.toggle('dark-mode'));
+
+    // Filter buttons
+    document.addEventListener('DOMContentLoaded', () => {
+    const buttons = document.querySelectorAll('.filter-btn');
+    const cards = document.querySelectorAll('.pub-col');
+
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        buttons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const filter = btn.dataset.filter;
+
+        cards.forEach(card => {
+          card.style.display =
+            filter === 'all' || card.dataset.category === filter
+              ? ''
+              : 'none';
+        });
+      });
+    });
+  });
+
+    // Collapse navbar on small screens when link clicked (behaviour parity with main)
+    document.querySelectorAll('.navbar-collapse .nav-link').forEach(link=>{
+      link.addEventListener('click', ()=>{
+        const navbarToggler = document.querySelector('.navbar-toggler');
+        const navbarCollapse = document.querySelector('.navbar-collapse');
+        if(navbarToggler.offsetParent !== null) new bootstrap.Collapse(navbarCollapse).toggle();
+      });
+    });
+
+    
+  </script>
+</body>
+</html>
+
+
+    

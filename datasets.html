@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Datasets | Charles Ekanem</title>
+  <link rel="icon" href="images/Logo.png" type="image/png" />
+
+  <!-- Bootstrap & AOS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
+
+  <style>
+    body { font-family: Monaco, Consolas, "Lucida Console", monospace; background:#f7f9fc; color:#2c2c2c; transition: background .35s, color .35s; }
+    body.dark-mode { background:#121212; color:#e0e0e0; }
+
+    #paywallOverlay{
+      position:fixed; inset:0; background:rgba(0,0,0,0.85); color:#fff; display:flex;
+      flex-direction:column; justify-content:center; align-items:center; z-index:9999;
+    }
+    #paywallOverlay input{
+      padding:.5rem .75rem; font-size:1rem; border-radius:.3rem; border:none; margin-top:1rem;
+      width:250px; text-align:center;
+    }
+    #paywallOverlay button{
+      margin-top:1rem; padding:.5rem 1rem; border:none; border-radius:.3rem; background:var(--accent);
+      color:#fff; cursor:pointer;
+    }
+
+    /* Navbar */
+    .navbar { background-color:#ffffff; box-shadow:0 2px 10px rgba(0,0,0,0.05); }
+    .dark-mode .navbar { background-color:#1e1e1e; }
+    .navbar-brand { color:#007bff; font-weight:600; }
+    .nav-link { color:inherit; }
+
+    .hover-color { transition: color 0.2s; }
+    .hover-color[data-color="yellow"]:hover { color: #facc15; }
+    .hover-color[data-color="green"]:hover { color: #22c55e; }
+    .hover-color[data-color="red"]:hover { color: #ef4444; }
+    .hover-color[data-color="violet"]:hover { color: #8b5cf6; }
+    .hover-color[data-color="pink"]:hover { color: #ec4899; }
+    .hover-color[data-color="indigo"]:hover { color: #6366f1; }
+
+    /* Hero */
+    .hero { padding:3rem 1rem; text-align:center; }
+    .hero h2 { font-size:2.25rem; border-bottom:2px solid #007bff; display:inline-block; padding-bottom:.5rem; }
+    .hero p { margin-top:1rem; font-size:1.1rem; color:#555; }
+
+    /* Filter Bar */
+    .filter-bar { display:flex; gap:.5rem; justify-content:center; flex-wrap:wrap; margin-bottom:2rem; }
+    .filter-btn { border-radius:999px; padding:.45rem .9rem; border:1px solid rgba(0,0,0,0.08); background:#fff; cursor:pointer; }
+    .filter-btn.active { background:#007bff; color:#fff; border-color:#007bff; }
+    .dark-mode .filter-btn { background:#1f1f1f; color:#ddd; border-color:#2a2a2a; }
+    .dark-mode .filter-btn.active { background:#007bff; color:#000; }
+
+    /* Dataset columns */
+    .dataset-col { background:#fff; border-radius:.75rem; padding:1rem; margin-bottom:1.5rem; border:1px solid rgba(0,0,0,0.05); }
+    .dark-mode .dataset-col { background:#1f1f1f; border-color:#333; }
+    .dataset-title { font-weight:600; margin-bottom:.25rem; }
+    .dataset-desc { font-size:.9rem; margin-bottom:.5rem; color:#555; }
+    .dataset-categories { font-size:.8rem; color:#888; margin-bottom:.5rem; }
+    .dataset-links a { margin-right:.5rem; margin-bottom:.25rem; display:inline-block; }
+
+    /* Dataset grid spacing */
+    #datasetGrid {
+      gap: 1.0rem;
+    }
+
+    /* Hero subheadline */
+    .hero p {
+      color: #555;
+    }
+    body.dark-mode .hero p {
+      color: #ddd;
+    }
+
+    /* Dataset card description */
+    .dataset-desc {
+      color: #555;
+    }
+    body.dark-mode .dataset-desc {
+      color: #ccc;
+    }
+
+    /* Footer */
+    footer { padding:1rem 0; background:#f8f9fa; text-align:center; }
+    .dark-mode footer { background:#1e1e1e; color:#ccc; }
+
+    /* Darkmode toggle button */
+    #darkToggle { position:fixed; bottom:20px; left:20px; z-index:9999; opacity:.9; }
+  </style>
+</head>
+<body>
+
+  <!-- Dark toggle -->
+  <button id="darkToggle" class="btn btn-sm btn-dark">Toggle Dark Mode</button>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg sticky-top">
+    <div class="container d-flex align-items-center">
+      <a class="navbar-brand d-flex align-items-center" href="index.html">
+        <img src="images/Logo.png" alt="ANT R&D Logo" class="rounded-circle me-2" style="height:40px;width:40px">
+        Charles Ekanem
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navLinks"><span class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse" id="navLinks">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link hover-color" data-color="yellow" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link hover-color" data-color="green" href="#projects">Projects</a></li>
+          <li class="nav-item"><a class="nav-link hover-color" data-color="red" href="#skills">Skills</a></li>
+          <li class="nav-item"><a class="nav-link hover-color" data-color="violet" href="#contact">Contact</a></li>
+          <li class="nav-item"><a class="nav-link hover-color" data-color="pink" href="publications.html">Publications</a></li>
+          <li class="nav-item"><a class="nav-link hover-color" data-color="yellow" href="gallery.html">Gallery</a></li>
+          <li class="nav-item"><a class="nav-link hover-color" data-color="indigo" href="CV.pdf" target="_blank">Resume/CV</a></li>
+          <li class="nav-item"><a class="nav-link hover-color" data-color="red" href="datasets.html">Datasets</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Paywall overlay -->
+  <div id="paywallOverlay">
+    <h2>Hold On, you need to be authenticated!</h2>
+    <p>Try to enter the password to view datasets</p>
+    <input type="password" id="datasetPassword" placeholder="Enter password"/>
+    <button id="unlockBtn">Unlock</button>
+    <p id="pwError" style="color:red;margin-top:.5rem;display:none;">LMAO, Re-check the password or be for real.</p>
+  </div>
+
+  <!-- Hero -->
+  <header class="hero">
+    <h2>Datasets</h2>
+    <p>Datasets created and curated during my journey</p>
+  </header>
+
+  <!-- Filter bar -->
+  <div class="filter-bar container">
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="images">Images</button>
+    <button class="filter-btn" data-filter="videos">Videos</button>
+    <button class="filter-btn" data-filter="audio">Audio</button>
+    <button class="filter-btn" data-filter="animals">Animals</button>
+    <button class="filter-btn" data-filter="plants">Plants</button>
+  </div>
+
+  <!-- Datasets -->
+  <main class="container mt-4 mb-5">
+    <div class="row" id="datasetGrid">
+      <!-- Example Dataset 1 -->
+      <div class="col-lg-3.5 col-md-3 col-sm-5 dataset-col" data-category="audio">
+        <div class="dataset-title">The CBAR Noise Dataset v1.0</div>
+        <div class="dataset-desc">Audio recordings of varied noise (market chatter, generator sets, traffic, commercial noise) collected across Urban Nigeria; Lagos, Abuja, PH, Uyo.</div>
+        <div class="dataset-categories">Audio</div>
+        <div class="dataset-links">
+          <a href="https://github.com/yourusername/placeholder-waterleaf.zip" target="_blank">Download ZIP</a>
+          <a href="https://github.com/yourusername/placeholder-waterleaf-sample.zip" target="_blank">Download Sample</a>
+        </div>
+      </div>
+
+      <!-- Example Dataset 2 -->
+      <div class="col-lg-3.5 col-md-3 col-sm-5 dataset-col" data-category="images">
+        <div class="dataset-title">The Deepfake Dataset v1.0</div>
+        <div class="dataset-desc">A large balanced Dataset (over 200k) of Fake and Real images useful in a deepfake detection research, curated from three major data sources; OpenForensics, Faceforensics++, Celeb-DF.</div>
+        <div class="dataset-categories">Images</div>
+        <div class="dataset-links">
+          <a href="https://www.kaggle.com/datasets/arch04/deepfake-detection-fyp" target="_blank">Download ZIP</a>
+        </div>
+      </div>
+
+      <!-- Example Dataset 3 -->
+      <div class="col-lg-3.5 col-md-3 col-sm-5 dataset-col" data-category="images plants">
+        <div class="dataset-title">The Talinum Triangulare (Water Leaf) Dataset v1.0</div>
+        <div class="dataset-desc">Time lapse images showing the growth stages of waterleaf captured through a stem grown in water (and a glass jar).</div>
+        <div class="dataset-categories">Images, Plants</div>
+        <div class="dataset-links">
+          <a href="https://github.com/yourusername/placeholder-maize.zip" target="_blank">Download ZIP</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p class="mb-0">&copy; 2025 Charles Ekanem • ANT R&D</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({once:true});
+
+    // Dark mode toggle
+    const darkToggle = document.getElementById('darkToggle');
+    darkToggle.addEventListener('click', ()=> document.body.classList.toggle('dark-mode'));
+
+    // Filter buttons
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const datasetCols = document.querySelectorAll('.dataset-col');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.dataset.filter;
+
+        datasetCols.forEach(col => {
+          if(filter==='all') col.style.display='block';
+          else {
+            const cats = col.dataset.category.split(' ');
+            col.style.display = cats.includes(filter) ? 'block' : 'none';
+          }
+        });
+      });
+    });
+
+    const correctPassword = "Charles3Ekanem"; 
+    const unlockBtn = document.getElementById('unlockBtn');
+    unlockBtn.addEventListener('click', ()=>{
+      const pw = document.getElementById('datasetPassword').value;
+      if(pw === correctPassword){
+        document.getElementById('paywallOverlay').style.display='none';
+        document.getElementById('datasetContent').style.display='block';
+      } else {
+        document.getElementById('pwError').style.display='block';
+      }
+    });
+
+  </script>
+</body>
+</html>

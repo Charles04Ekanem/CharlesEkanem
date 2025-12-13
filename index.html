@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Charles Ekanem | Computer and Research Engineer</title>
+  <link rel="icon" href="images/Logo.png" type="image/jpg" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-wH+gdkk+...etc" crossorigin="anonymous"></script>
+  <style>
+    body {
+      font-family: Monaco, Consolas, "Lucida Console", monospace;
+      background-color: #f7f9fc;
+      color: #2c2c2c;
+      transition: background 0.4s ease, color 0.4s ease;
+      margin: 0;
+      padding: 0;
+    }
+    body.dark-mode {
+      background-color: #121212;
+      color: #e0e0e0;
+    }
+     /* Hero */
+    .hero{min-height:72vh;display:grid;place-items:center;text-align:center;padding:4rem 1rem;position:relative;overflow:hidden}
+    .hero .card{backdrop-filter:blur(8px);border-radius:18px;padding:2rem;box-shadow:0 20px 40px rgba(12,25,60,.08)}
+    .gradient-blob{position:absolute;width:520px;height:520px;border-radius:50%;filter:blur(80px);transform:translate(-30%,-40%);opacity:.85}
+    .blob1{background:radial-gradient(circle at 30% 30%, #ff6b6b, #ff9a9e)}
+    .blob2{background:radial-gradient(circle at 70% 70%, #6bffb3, #2bd1ff);right:-10%;top:10%}
+    h2 {
+      font-size: 2rem;
+      border-bottom: 2px solid #007bff;
+      padding-bottom: 0.5rem;
+      margin-top: 3rem;
+    }
+    .dark-mode .dark-mode-bg {
+      background-color: #1f1f1f; /* or your dark mode color */
+      color: white;
+    }
+    .navbar {
+      background-color: #ffffff !important;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+    .dark-mode .navbar {
+      background-color: #1e1e1e !important;
+    }
+    /* Navbar link contrast fix */
+    .navbar .nav-link {
+      color: #000; /* Default for light mode */
+      transition: color 0.3s;
+    }
+    
+    .dark-mode .navbar .nav-link {
+      color: #fff; /* White text in dark mode */
+    }
+    .navbar-brand {
+      font-weight: 600;
+      color: #007bff !important;
+    }
+    .section {
+      padding: 4rem 0;
+    }
+    .home-bg {
+      background-color: #f8f9fa; /* light mode base (same as bg-light) */
+      color: #000;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    
+    .dark-mode .home-bg {
+      background-color: #1f1f1f; /* match your dark sections */
+      color: #fff;
+    }
+        /* Default (light mode) */
+    .home-section {
+      color: #000;
+      background-color: transparent;
+      transition: color 0.3s ease;
+    }
+    
+    .home-title {
+      color: #000;
+    }
+    
+    .home-subtitle {
+      color: rgba(0, 0, 0, 0.6);
+    }
+    
+    /* Dark mode overrides */
+    .dark-mode .home-section {
+      color: #fff;
+    }
+    
+    .dark-mode .home-title {
+      color: #fff;
+    }
+    
+    .dark-mode .home-subtitle {
+      color: rgba(255, 255, 255, 0.75);
+    }
+
+    .profile-img {
+      max-width: 220px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .project-card, .skill-card {
+      background: #fff;
+      border-radius: 10px;
+      padding: 1.5rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+      transition: transform 0.3s, background 0.3s;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+    }
+    
+    .dark-mode .project-card, .dark-mode .skill-card {
+      background: #1f1f1f;
+    }
+    
+    .project-card:hover, .skill-card:hover {
+      transform: translateY(-5px);
+    }
+    
+    /* Force equal height in grid layout */
+    .row.g-4 > .col-md-4 {
+      display: flex;
+    }
+    .row.skills-row > .col-md-4 {
+      display: flex;
+    }
+    .contact-icon img {
+    transition: transform 0.3s ease;
+    }
+  
+    .contact-icon:hover img {
+      transform: scale(1.15);
+    }
+    
+    @keyframes fadeIn {
+      from {opacity: 0; transform: scale(0.95);}
+      to {opacity: 1; transform: scale(1);}
+    }
+    
+    footer {
+      background-color: #f8f9fa;
+      padding: 1rem 0;
+      font-size: 0.9rem;
+    }
+    .dark-mode footer {
+      background-color: #1e1e1e;
+    }
+    #darkToggle {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      z-index: 9999;
+      opacity: 0.85;
+    }
+    #particles-js {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+    /* Dark mode modal adjustments */
+    body.dark-mode .modal-content {
+      background-color: #1e1e1e;  /* Dark background */
+      color: #e0e0e0;             /* Light text */
+    }
+
+    body.dark-mode .modal-header,
+    body.dark-mode .modal-body,
+    body.dark-mode .modal-footer {
+      color: #e0e0e0;
+    }
+
+    body.dark-mode .btn-close {
+      filter: invert(1);  /* Make the close button visible on dark */
+    }
+  /* Default light mode colors */
+  body { --nav-text: #2c2c2c; }
+  body.dark-mode { --nav-text: #e0e0e0; }
+
+  .hover-color {
+    color: var(--nav-text);
+    transition: color 0.2s;
+  }
+
+  .hover-color[data-color="yellow"]:hover { color: #facc15; }
+  .hover-color[data-color="green"]:hover { color: #22c55e; }
+  .hover-color[data-color="red"]:hover { color: #ef4444; }
+  .hover-color[data-color="violet"]:hover { color: #8b5cf6; }
+  .hover-color[data-color="pink"]:hover { color: #ec4899; }
+  .hover-color[data-color="indigo"]:hover { color: #6366f1; }
+  </style>
+</head>
+<body>
+  <div id="particles-js"></div>
+  <button id="darkToggle" class="btn btn-sm btn-dark">Toggle Dark Mode</button>
+
+  <nav class="navbar navbar-expand-lg sticky-top bg-light">
+  <div class="container d-flex align-items-center">
+    <a class="navbar-brand d-flex align-items-center" href="#">
+      <img src="images/Logo.png" alt="ANT R&D Logo" class="rounded-circle me-2" style="height: 40px; width: 40px;">
+      Charles Ekanem
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navLinks">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navLinks">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link hover-color" data-color="yellow" href="#about">About</a></li>
+        <li class="nav-item"><a class="nav-link hover-color" data-color="green" href="#projects">Projects</a></li>
+        <li class="nav-item"><a class="nav-link hover-color" data-color="red" href="#skills">Skills</a></li>
+        <li class="nav-item"><a class="nav-link hover-color" data-color="violet" href="#contact">Contact</a></li>
+        <li class="nav-item"><a class="nav-link hover-color" data-color="pink" href="publications.html">Publications</a></li>
+        <li class="nav-item"><a class="nav-link hover-color" data-color="yellow" href="gallery.html">Gallery</a></li>
+        <li class="nav-item"><a class="nav-link hover-color" data-color="indigo" href="CV.pdf" target="_blank">Resume/CV</a></li>
+        <li class="nav-item"><a class="nav-link hover-color" data-color="red" href="datasets.html">Datasets</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<section id="home" class="position-relative overflow-hidden vh-100 d-flex flex-column justify-content-center align-items-center text-center home-section">
+  <canvas id="starfield" class="position-absolute top-0 start-0 w-100 h-100" style="z-index: -1;"></canvas>
+  <!-- Carousel -->
+  <div id="homeCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2000">
+    <div class="carousel-inner rounded shadow-lg mx-auto" style="max-width: 360px;">
+      <div class="carousel-item active">
+        <img src="images/LinkedIn.jpg" class="d-block w-100 rounded" style="max-height: 250px; object-fit: contain;" alt="Charles 1" />
+      </div>
+      <div class="carousel-item">
+        <img src="images/Charles2.jpg" class="d-block w-100 rounded" style="max-height: 250px; object-fit: contain;" alt="Charles 2" />
+      </div>
+      <div class="carousel-item">
+        <img src="images/Charles3.jpg" class="d-block w-100 rounded" style="max-height: 250px; object-fit: contain;" alt="Charles 3" />
+      </div>
+    </div>
+  </div>
+  <!-- Intro Text -->
+  <div>
+      <h1 class="fw-bold">Charles <span class="underline">Ekanem</span></h1>
+      <p class="lead">Computer & Research Engineer | Building ANT R&D | Engineering solutions for everyday challenges</p>
+      <div class="d-flex gap-2 justify-content-center mt-3">
+        <a href="#projects">Explore Projects</a>
+        <a href="#blog">Read the Blog</a>
+      </div>
+  </div>
+</section>
+
+  
+<section id="about" class="section container">
+    <h2>About Me</h2>
+    <div class="row align-items-center">
+     <div class="col-md-4 text-center">
+        <img src="images/LinkedIn.jpg" alt="Charles Ekanem" class="glow-hover me-3 img-fluid rounded" width= "250"/>             
+      </div>
+      <div class="col-md-8">
+        <p>
+          Hello there! I'm Charles Ekanem, a recent Computer Engineering Graduate from Nile University of Nigeria. 
+          I have interests in embedded systems, smart devices, machine learning and dataset creation/curation tailored to Nigerian contexts. 
+          I am also building <strong>ANT Research and Development Lab</strong> to promote indigenous and innovative tech research and development tools. 
+          I'm passionate about building smart systems that combine hardware innovation and software intelligence.
+        </p>
+        <h5 class="mt-4">Research Interests</h5>
+        <ul class="list-unstyled ms-3">
+          <li class="mb-1">
+            <i class="bi bi-cpu-fill text-primary me-2"></i> Embedded Systems & Robotics.
+          </li>
+          <li class="mb-1">
+            <i class="bi bi-robot text-success me-2"></i> AI/ML for Nigerian contexts in domains of Voice, Vision and Control.
+          </li>
+          <li class="mb-1">
+            <i class="bi bi-soundwave text-warning me-2"></i> Signal & Audio Processing.
+          </li>
+          <li class="mb-1">
+            <i class="bi bi-globe2 text-info me-2"></i> Ethically sourced and custom built Datasets.
+          </li>
+        </ul>
+      </div>
+    </div>
+ 
+     <div class="row mt-5">
+    <!-- Education Section -->
+    <div class="col-md-6 mb-4">
+      <h4 class="mb-3">Education</h4>
+      <ul class="list-unstyled">
+        <li class="mb-3 d-flex align-items-center justify-content-between">
+          <div class="d-flex align-items-center">
+            <img src="images/NILELOGO.jpeg" alt="Nile Logo" class="glow-hover me-3 rounded-circle" width="50" />
+            <div>
+              <h6 class="mb-1">Nile University of Nigeria</h6>
+              <div class="small text">B.Eng, Computer Engineering • Feb 2021 – Nov 2025</div>
+            </div>
+          </div>
+          <button class="btn btn-sm btn-outline-primary ms-auto" data-bs-toggle="modal" data-bs-target="#nileModal">View details</button>
+        </li>
+
+        <li class="d-flex align-items-center justify-content-between">
+          <div class="d-flex align-items-center">
+            <img src="images/TISS logo.png" alt="Topfaith Logo" class="me-3 rounded-circle" width="50" />
+            <div>
+              <h6 class="mb-1">Topfaith International Secondary School</h6>
+              <div class="small text">Engineering Science • Oct 2014 – Nov 2020</div>
+            </div>
+          </div>
+          <button class="btn btn-sm btn-outline-primary ms-auto" data-bs-toggle="modal" data-bs-target="#topfaithModal">View details</button>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Experience Section -->
+    <div class="col-md-6 mb-4">
+      <h4 class="mb-3">Experience</h4>
+      <ul class="list-unstyled">
+        <li class="mb-3 d-flex align-items-center justify-content-between">
+          <div class="d-flex align-items-center">
+            <img src="images/gigaxysafe-technologies-ltd.jpg" alt="Gigaxysafe Logo" class="glow-hover me-3 rounded-circle" width="50" />
+            <div>
+              <h6 class="mb-1">Gigaxysafe Technologies</h6>
+              <div class="small text">Junior Network Engineer • Mar 2024 – Aug 2024</div>
+            </div>
+          </div>
+          <button class="btn btn-sm btn-outline-primary ms-auto" data-bs-toggle="modal" data-bs-target="#gigaxysafeModal">View details</button>
+        </li>
+
+        <li class="d-flex align-items-center justify-content-between">
+          <div class="d-flex align-items-center">
+            <img src="images/AKSGMoH.jpeg" alt="AKSG MoH Logo" class="me-3 rounded-circle" width="50" />
+            <div>
+              <h6 class="mb-1">Akwa Ibom State Ministry of Health</h6>
+              <div class="small text">Student Assistant • Mar 2019 – Apr 2019</div>
+            </div>
+          </div>
+          <button class="btn btn-sm btn-outline-primary ms-auto" data-bs-toggle="modal" data-bs-target="#aksgModal">View details</button>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Modals -->
+  <div class="modal fade" id="nileModal" tabindex="-1" aria-labelledby="nileModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="nileModalLabel">Nile University of Nigeria</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Awarded a 60% Scholarship at Nile University and studied Computer Engineering. 
+          Took part in several activities such as NACOMES, NUESA, Faculty Football Cup.
+          Graduated with Honours and a Second Class Upper degree.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="topfaithModal" tabindex="-1" aria-labelledby="topfaithModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="topfaithModalLabel">Topfaith International Secondary School</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Studied Engineering Science and subjects such as Physics, Chemistry, Biology, Geography, Economics, Data Processing, Computer Studies. 
+          Participated in clubs and sports such as JETs Club, UN Club, Football, Volleyball and Field Hockey. Graduated with a 294 score in JAMB-UTME. 
+          Consistently ranked among the best 30 out of over 250 students.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="gigaxysafeModal" tabindex="-1" aria-labelledby="gigaxysafeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="gigaxysafeModalLabel">Gigaxysafe Technologies</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Worked for 6 months as a Junior Network Engineer.
+          Responsibilities included Network setup, troubleshooting and client interaction.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="aksgModal" tabindex="-1" aria-labelledby="aksgModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="aksgModalLabel">Akwa Ibom State Ministry of Health</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Student Assistant with General Hospital, Ikot Ekpene. 
+          Tasks included workshops and seminars, support in health campaigns and office work.
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <section id="projects" class="section container">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h2>Projects</h2>
+      <div>
+        <select id="project-filter" class="form-select form-select-sm">
+          <option value="all">All</option>
+          <option value="ai/ml">Artificial Intelligence/Machine Learning</option>
+          <option value="embedded">Embedded Systems</option>
+          <option value="signal">Signal Processing</option>
+          <option value="dataset">Datasets</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="project-card project-item" data-cat="ai/ml" data-bs-toggle="modal" data-bs-target="#projectModal1">
+          <div class="project-tags">
+            <span>Python,</span>
+            <span>Game Development</span>
+            <small class="small-muted">2025</small>
+          </div>
+          <h4>TicTacToe Game (Python)</h4>
+          <p>A classic 2-player game developed with the Waterfall model. Implemented logic to allow turns and input validation, employed use of TKinter GUI.</p>
+          <img src="images/tictactoe.png" class="img-fluid mb-2" alt="TicTacToe" />
+          <a href="https://github.com/Charles04Ekanem/SoftwareDevTechniques-Project" class="btn btn-outline-primary btn-sm">GitHub</a>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="project-card project-item" data-cat="ai/ml" data-bs-toggle="modal" data-bs-target="#projectModal4">
+          <div class="project-tags">
+            <span>Artificial Intelligence,</span>
+            <span>Deep Learning</span>
+          </div>
+          <h4>Deepfake Detection</h4>
+          <p>A CNN-based system to detect facial manipulation in videos and images. Employed a Transfer Learning and Ensemble dataset approach.</p>
+          <img src="images/deepfake detector.png" class="img-fluid mb-2" alt="Deepfake Detection" />
+          <a href="https://github.com/Charles04Ekanem/deepfake-detector" class="btn btn-outline-primary btn-sm">GitHub</a>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="project-card project-item" data-cat="embedded" data-bs-toggle="modal" data-bs-target="#projectModal2">
+          <div class="project-tags">
+            <span>Arduino,</span>
+            <span>Embedded Systems</span>
+          </div>
+          <h4>4WD Arduino Car</h4>
+          <p>Designed and programmed a 4WD Arduino-based robotic vehicle. Integrated Ultrasonic, Infrared sensors with NavLogic for autonomous navigation.</p>
+          <img src="images/4wd.jpg" class="img-fluid mb-2" alt="4WD Car" />
+          <a href="https://github.com/Charles04Ekanem/EmbeddedSystems" class="btn btn-outline-primary btn-sm">GitHub</a>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="project-card project-item" data-cat="signal" data-bs-toggle="modal" data-bs-target="#projectModal5">
+          <div class="project-tags">
+            <span>Audio Processing,</span>
+            <span>PyTorch</span>
+          </div>
+          <h4>Voice Noise Reduction</h4>
+          <p>Enhanced speech clarity in Nigerian urban noise using a custom built CNN-BiLSTM-Attention-Residual (CBAR) Model. Developed a custom hybrid dataset with real world Nigerian urban noise (chatter, generator, traffic).</p>
+          <img src="images/placeholderforprojects.png" class="img-fluid mb-2" alt="Voice Denoising" />
+          <a href="https://github.com/Charles04Ekanem/Voice-Denoise-Nigeria" class="btn btn-outline-primary btn-sm">GitHub</a>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="project-card project-item" data-cat="embedded" data-bs-toggle="modal" data-bs-target="#projectModal3">
+          <div class="project-tags">
+            <span>Internet of Things,</span>
+            <span>Arduino</span>
+          </div>
+          <h4>Smart Dustbin</h4>
+          <p>An ultrasonic sensor-based contactless smart waste bin using Arduino. Using an ultrasonic sensor for input and servo motor as actuator, the servo lifts the lid when an object is detected at a distance.</p>
+          <img src="images/smart-dustbin.jpg" class="img-fluid mb-2" alt="Smart Bin" />
+          <a href="https://github.com/Charles04Ekanem/EmbeddedSystems" class="btn btn-outline-primary btn-sm">GitHub</a>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="project-card project-item" data-cat="dataset" data-bs-toggle="modal" data-bs-target="#projectModal3">
+          <div class="project-tags">
+            <span>Coming Soon,</span>
+            <span>Developing</span>
+          </div>
+          <h4>Working on This!</h4>
+          <p>I'm currently working on this project and it's not quite ready to show just yet. Stay tuned and check back soon.</p>
+          <img src="images/placeholderforprojects.png" class="img-fluid mb-2" alt="Coming" />
+          <a href="https://github.com/" class="btn btn-outline-primary btn-sm">GitHub</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="skills" class="section container">
+    <h2>Skills</h2>
+    <div class="row skills-row g-4">
+      <!-- Embedded Systems -->
+      <div class="col-md-4">
+        <div class="skill-card p-3 rounded shadow-sm">
+          <div class="d-flex justify-content-between align-items-start">
+            <div class="flex-grow-1 pe-3">
+              <h5 class="mb-2">Embedded Systems and Electronics</h5>
+              <p class="mb-0">Experience with Arduino, Raspberry Pi and interfacing with sensors and actuators.</p>
+            </div>
+            <div class="d-flex flex-column align-items-end gap-2">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/arduino/arduino-original.svg" alt="Arduino" title="Arduino" style="width: 32px;" />
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/raspberrypi/raspberrypi-original.svg" alt="Raspberry Pi" title="Raspberry Pi" style="width: 32px;" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Machine Learning -->
+      <div class="col-md-4">
+        <div class="skill-card p-3 rounded shadow-sm">
+          <div class="d-flex justify-content-between align-items-start">
+            <div class="flex-grow-1 pe-3">
+              <h5 class="mb-2">Machine Learning (Neural Networks)</h5>
+              <p class="mb-0">Experienced in PyTorch, CNNs, LSTMs and custom models for audio, vision and embedded AI.</p>
+            </div>
+            <div class="d-flex flex-column align-items-end gap-2">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg" alt="PyTorch" title="PyTorch" style="width: 32px;" />
+              <img src="images/NN.png" alt="Neural Network" title="Neural Network" style="width: 32px;" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Network Dev/Monitoring/optimization -->
+      <div class="col-md-4">
+        <div class="skill-card p-3 rounded shadow-sm">
+          <div class="d-flex justify-content-between align-items-start">
+            <div class="flex-grow-1 pe-3">
+              <h5 class="mb-2">Network Engineering</h5>
+              <p class="mb-0">Network simulation, monitoring and optimization for improved connectivity.</p>
+            </div>
+            <div class="d-flex flex-column align-items-end gap-2">
+              <img src="images/networks.png" alt="HTML" title="HTML" style="width: 32px;" />
+              <img src="images/networks2.png" alt="CSS" title="CSS" style="width: 32px;" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Signal Processing -->
+      <div class="col-md-4">
+        <div class="skill-card p-3 rounded shadow-sm">
+          <div class="d-flex justify-content-between align-items-start">
+            <div class="flex-grow-1 pe-3">
+              <h5 class="mb-2">Signal Processing</h5>
+              <p class="mb-0">Digital filtering, audio noise reduction and real-time data processing with AI.</p>
+            </div>
+            <div class="d-flex flex-column align-items-end gap-2">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" title="Python" style="width: 32px;" />
+              <img src="images/waveform.png" alt="NumPy" title="NumPy" style="width: 32px;" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Digital System Design and Logic -->
+      <div class="col-md-4">
+        <div class="skill-card p-3 rounded shadow-sm">
+          <div class="d-flex justify-content-between align-items-start">
+            <div class="flex-grow-1 pe-3">
+              <h5 class="mb-2">Digital System Design</h5>
+              <p class="mb-0">Designing logic circuits, binary computation and PCB-level digital systems.</p>
+            </div>
+            <div class="d-flex flex-column align-items-end gap-2">
+              <img src="images/digsys.png" alt="Binary Code" title="Binary Code" style="width: 32px" />
+              <img src="images/digsys2.png" alt="Circuit Board" title="Circuit Board" style="width: 32px" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Control Engineering -->
+      <div class="col-md-4">
+        <div class="skill-card p-3 rounded shadow-sm">
+          <div class="d-flex justify-content-between align-items-start">
+            <div class="flex-grow-1 pe-3">
+              <h5 class="mb-2">Control Engineering and Automation</h5>
+              <p class="mb-0">Modelling and implementation of basic control algorithms for robotics and automation.</p>
+            </div>
+            <div class="d-flex flex-column align-items-end gap-2">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/matlab/matlab-original.svg" alt="MATLAB" title="MATLAB" style="width: 32px;" />
+              <img src="images/controleng.png" alt="controleng" title="controleng" style="width: 32px" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Computer Aided Design and Engineering -->
+      <div class="col-md-4">
+        <div class="skill-card p-3 rounded shadow-sm">
+          <div class="d-flex justify-content-between align-items-start">
+            <div class="flex-grow-1 pe-3">
+              <h5 class="mb-2">Computer Aided Design and Engineering</h5>
+              <p class="mb-0">Experienced in 2D/3D modelling with AutoCAD and Proteus for PCB design and circuit simulation.</p>
+            </div>
+            <div class="d-flex flex-column align-items-end gap-2">
+              <img src="images/CAD.png" title="AutoCAD" style="width: 32px" />
+              <img src="images/proteus.jpeg" alt="Proteus" title="Proteus" style="width: 32px" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Software Development and Prj Mgt -->
+      <div class="col-md-4">
+        <div class="skill-card p-3 rounded shadow-sm">
+          <div class="d-flex justify-content-between align-items-start">
+            <div class="flex-grow-1 pe-3">
+              <h5 class="mb-2">Software Development</h5>
+              <p class="mb-0">Designing and building software solutions with version control and structured planning.</p>
+            </div>
+            <div class="d-flex flex-column align-items-end gap-2">
+              <img src="https://img.icons8.com/material-outlined/48/github.png" alt="GitHub" style="width: 32px" />
+              <img src="images/report.png" alt="Flowchart" title="Flowchart" style="width: 32px" />
+            </div>
+          </div>
+        </div>
+      </div>
+       <!-- Research and Documentation -->
+      <div class="col-md-4">
+        <div class="skill-card p-3 rounded shadow-sm">
+          <div class="d-flex justify-content-between align-items-start">
+            <div class="flex-grow-1 pe-3">
+              <h5 class="mb-2">Research and Technical Documentation</h5>
+              <p class="mb-0">Experienced in conducting research through problem definition, literature review, methodology choice and analysis. Knowledge of LaTex and documentation tools.</p>
+            </div>
+            <div class="d-flex flex-column align-items-end gap-2">
+              <img src="images/LaTex.png" alt="GitHub" style="width: 32px" />
+              <img src="images/lightbulb.png" alt="Flowchart" title="Flowchart" style="width: 32px" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section id="contact" class="section container">
+    <h2>Contact</h2>
+    <div class="d-flex justify-content-center flex-wrap gap-4">
+      <!-- Email -->
+      <a href="mailto:charlesitaekanem@gmail.com" title="Email"
+         class="mx-6 my-2 contact-icon" data-aos="zoom-in" data-aos-delay="100">
+        <img src="https://img.icons8.com/color/48/gmail-new.png" alt="Email" style="width: 48px; height: 48px;" />
+      </a>
+      <!-- LinkedIn -->
+      <a href="https://www.linkedin.com/in/charles-ekanem-34b6402a6" target="_blank" title="LinkedIn"
+         class="mx-6 my-2 contact-icon" data-aos="zoom-in" data-aos-delay="200">
+        <img src="https://img.icons8.com/color/48/linkedin.png" alt="LinkedIn" style="width: 48px; height: 48px;" />
+      </a>
+      <!-- GitHub -->
+      <a href="https://github.com/Charles04Ekanem" target="_blank" title="GitHub"
+         class="mx-6 my-2 contact-icon" data-aos="zoom-in" data-aos-delay="300">
+        <img src="https://img.icons8.com/material-outlined/48/github.png" alt="GitHub" style="width: 48px; height: 48px;" />
+      </a>
+      <!-- Twitter -->
+      <a href="https://x.com/Charles3Ekanem" target="_blank" title="Twitter/X"
+         class="mx-6 my-2 contact-icon" data-aos="zoom-in" data-aos-delay="200">
+        <img src="https://img.icons8.com/ios-filled/50/twitterx--v2.png" alt="Twitter/X" style="width: 48px; height: 48px;" />
+      </a>
+      <!-- Research Gate -->
+      <a href="https://www.researchgate.net/profile/Charles-Ekanem?ev=hdr_xprf" target="_blank" title="ResearchGate" class="mx-6 my-2 contact-icon" data-aos="zoom-in" data-aos-delay="200">
+        <img src="images/researchgate.png" alt="ResearchGate" style="width: 48px; height: 48px;" />
+      </a>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <form action="https://formspree.io/f/movwbaae" method="POST">
+          <div class="mb-3">
+            <label for="name" class="form-label">Your Name</label>
+            <input type="text" class="form-control" id="name" name="name" required />
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Your Email</label>
+            <input type="email" class="form-control" id="email" name="_replyto" required />
+          </div>
+          <div class="mb-3">
+            <label for="message" class="form-label">Your Message</label>
+            <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer class="text-center">
+    <div class="container">
+      <p class="mb-0">&copy; 2025 Charles Ekanem • Built at ANT R&D</p>
+    </div>
+  </footer>
+
+  <!-- Floating theme toggle with localStorage memory -->
+  <div id="themeToggle" class="floating-toggle" role="button" aria-label="Toggle theme">
+    <div class="toggle-inner" id="toggleInner">
+      <div class="toggle-dot" id="toggleDot"></div>
+    </div>
+  </div>
+
+  <!-- Experience modal -->
+  <div class="modal fade" id="expModal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header"><h5 class="modal-title" id="expTitle">Experience</h5><button class="btn-close" data-bs-dismiss="modal"></button></div>
+        <div class="modal-body" id="expBody"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const filterSelect = document.getElementById('project-filter');
+    const projects = document.querySelectorAll('.project-item');
+
+    filterSelect.addEventListener('change', () => {
+      const selected = filterSelect.value;
+
+      projects.forEach(project => {
+        if (selected === 'all' || project.getAttribute('data-cat') === selected) {
+          project.parentElement.style.display = 'block'; // show the column
+        } else {
+          project.parentElement.style.display = 'none'; // hide the column
+        }
+      });
+    });
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init();
+
+    // Theme toggle with memory
+    const body = document.body;
+    const themeToggle = document.getElementById('themeToggle');
+    const toggleDot = document.getElementById('toggleDot');
+
+    function applyTheme(theme){
+      if(theme === 'dark') body.classList.add('dark'); else body.classList.remove('dark');
+      localStorage.setItem('ant_theme', theme);
+    }
+
+    // load theme on startup
+    const saved = localStorage.getItem('ant_theme');
+    applyTheme(saved || 'light');
+
+    themeToggle.addEventListener('click', ()=>{
+      const isDark = body.classList.toggle('dark');
+      applyTheme(isDark? 'dark':'light');
+    });
+
+    // Project filtering
+    document.getElementById('project-filter').addEventListener('change', (e)=>{
+      const v = e.target.value;
+      document.querySelectorAll('.project-item').forEach(it=>{
+        it.style.display = (v==='all' || it.dataset.cat===v)? 'block':'none';
+      });
+    });
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+  <script>
+    AOS.init();
+
+    const toggle = document.getElementById('darkToggle');
+    toggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+    });
+
+    particlesJS('particles-js', {
+      particles: {
+        number: { value: 40 },
+        size: { value: 3 },
+        color: { value: "#ADD8E6" },
+        line_linked: { enable: true, distance: 150, color: "#007bff", opacity: 0.4 },
+        move: { speed: 2 }
+      },
+      interactivity: {
+        detect_on: "canvas",
+        events: {
+          onhover: { enable: true, mode: "repulse" },
+          onclick: { enable: true, mode: "push" }
+        },
+        modes: {
+          repulse: { distance: 100 },
+          push: { particles_nb: 4 }
+        }
+      }
+    });
+  </script>
+  
+  <script>
+  document.querySelectorAll('.navbar-collapse .nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+      const navbarToggler = document.querySelector('.navbar-toggler');
+      const navbarCollapse = document.querySelector('.navbar-collapse');
+      if (navbarToggler.offsetParent !== null) { // Only on small screens
+        new bootstrap.Collapse(navbarCollapse).toggle();
+      }
+    });
+  });
+</script>
+
+<script>
+  const canvas = document.getElementById('starfield');
+  const ctx = canvas.getContext('2d');
+
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  const stars = Array(200).fill().map(() => ({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    r: Math.random() * 1.5
+  }));
+
+  function animateStars() {
+    // Make the canvas transparent — no background fill
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // Draw stars only
+    ctx.fillStyle = '#fff'; // star color (adjust for style)
+    stars.forEach(s => {
+      s.y += 0.5;
+      if (s.y > canvas.height) s.y = 0;
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+      ctx.fill();
+    });
+
+    requestAnimationFrame(animateStars);
+  }
+
+  animateStars();
+
+  window.addEventListener('resize', () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  });
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
